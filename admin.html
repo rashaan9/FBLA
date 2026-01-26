@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - School Lost & Found</title>
+
+    <!-- Stylesheet for admin login page -->
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <!-- Authentication wrapper -->
+    <div class="auth-wrapper">
+
+        <!-- Login form container -->
+        <div class="login-container">
+            <h2>Admin Login</h2>
+
+            <!-- Admin login form -->
+            <form id="adminLoginForm">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+
+                <!-- Error message display -->
+                <p class="error" id="errorMsg"></p>
+            </form>
+        </div>
+
+        <!-- Home button -->
+        <a href="index.html" class="home-btn">Home</a>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
+    <!-- Custom scripts -->
+    <script src="firebase.js"></script> <!-- Firebase configuration -->
+    <script src="admin.js"></script> <!-- Admin login logic -->
+
+</body>
+</html>

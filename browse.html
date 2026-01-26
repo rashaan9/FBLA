@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Lost Items - School Lost & Found</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="browse.css"> 
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script src="firebase.js"></script> 
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+     <nav class="navbar">
+        <div class="logo">
+            <img src="schoolLogo.png" alt="Site Logo">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="report.html">Report Item</a></li>
+            <li><a href="browse.html">Browse Items</a></li>
+            <li><a href="claim.html">Claim Item</a></li>
+        </ul>
+
+        <!-- Mobile menu button -->
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+
+
+    <!-- Hero section -->
+    <header class="hero">
+        <h1>Lost something? Browse items below</h1>
+        <p>Browse reported items and see if yours has been found</p>
+    </header>
+
+    <!-- Main content -->
+    <main class="page-content">
+
+        <!-- Page title -->
+        <h1 class="page-title">Browse Lost Items</h1>
+
+        <!-- Stats bar showing totals -->
+        <div class="stats-bar">
+            <div class="stat">
+                <h2 id="totalItems">0</h2>
+                <p>Items Found</p>
+            </div>
+            <div class="stat">
+                <h2 id="claimedItems">0</h2>
+                <p>Items Claimed</p>
+            </div>
+            <div class="stat">
+                <h2 id="newToday">0</h2>
+                <p>New Today</p>
+            </div>
+        </div>
+
+        <!-- Search bar for filtering items -->
+        <input
+            type="text"
+            id="searchInput"
+            class="search-bar"
+            placeholder="Search items..."
+        >
+
+        <!-- Container for loaded items -->
+        <div class="item-grid" id="itemsContainer"></div>
+
+    </main>
+
+    <!-- Browse Script -->
+    <script src="browse.js"></script>
+
+</body>
+</html>

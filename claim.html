@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Lost Item - School Lost & Found</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+      <nav class="navbar">
+        <div class="logo">
+            <img src="schoolLogo.png" alt="Site Logo">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="report.html">Report Item</a></li>
+            <li><a href="browse.html">Browse Items</a></li>
+            <li><a href="claim.html">Claim Item</a></li>
+        </ul>
+
+        <!-- Mobile menu button -->
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+
+
+    <!-- Hero -->
+    <header class="hero">
+        <h1>Claim Your Lost Item</h1>
+        <p>Fill out the form to claim a lost item found in the browse items page.</p>
+    </header>
+
+    <!-- Claim Form -->
+    <section class="section">
+        <h2>Claim Item Form</h2>
+        <form class="claim-form" action="#" method="POST">
+            <div class="form-group">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" placeholder="example@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="itemName">Item Name:</label>
+                <input type="text" id="itemName" name="itemName" placeholder="Black Water Bottle" required>
+            </div>
+
+            <div class="form-group">
+                <label for="itemDescription">Item Description:</label>
+                <textarea id="itemDescription" name="itemDescription"
+                    placeholder="Color, size, brand, distinguishing features..." rows="4" required></textarea>
+            </div>
+
+            <button type="submit" class="btn primary">Submit Report</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer1">© 2025 School Lost & Found. All Rights Reserved.</p>
+        <p class="footer1">Cumberland Valley School District</p>
+        <p class="footer1">6746 Carlisle Pike, Mechanicsburg, PA 17050</p>
+        <a href="https://www.cvschools.org/">https://www.cvschools.org/</a>
+    </footer>
+
+    <!-- Firebase and JS -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    <script src="firebase.js"></script>
+    <script src="claim.js"></script>
+
+</body>
+</html>
