@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.querySelector(".lost-form");
   if (!form) return;
 
+    
   form.addEventListener("submit", async (e) => {
     e.preventDefault(); // Prevent page reload
 
