@@ -14,11 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const fetchItems = async () => {
     try {
       const snapshot = await db.collection("items")
-            .where("verified", "==", true)
-            .where("claimed", "==", false)
-            .orderBy("timestamp", "desc")
-            .orderBy("__name__", "desc")
-            .get();
+        .where("verified", "==", true)
+        .where("claimed", "==", false)
+        .get();
+
+      console.log("browse snapshot size:", snapshot.size);
+      snapshot.docs.forEach(doc => console.log(doc.id, doc.data()));
 
       if (snapshot.empty) {
         container.innerHTML = "<p>No items found.</p>";
@@ -97,6 +98,50 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   });
 
+  // Profile dropdown
+  const loggedIn = localStorage.getItem("loggedIn");
+  if (loggedIn === "true") {
+    const navbar = document.querySelector(".navbar");
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("profile-wrapper");
+    wrapper.style.position = "relative";
+
+    const img = document.createElement("img");
+    img.src = "/images/pfp.jpg";
+    img.alt = "Student Profile";
+    img.classList.add("studentProfile");
+
+    const dropdown = document.createElement("div");
+    dropdown.classList.add("profile-dropdown");
+    const username = localStorage.getItem("username") || "Student";
+    dropdown.innerHTML = `
+      <p class="profile-name">${username}</p>
+      <button id="logoutBtn">Logout</button>
+    `;
+
+    wrapper.appendChild(img);
+    wrapper.appendChild(dropdown);
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    navbar.insertBefore(wrapper, menuToggle);
+
+    let hideTimeout;
+    wrapper.addEventListener("mouseenter", () => {
+      clearTimeout(hideTimeout);
+      dropdown.style.display = "flex";
+    });
+    wrapper.addEventListener("mouseleave", () => {
+      hideTimeout = setTimeout(() => {
+        dropdown.style.display = "none";
+      }, 200);
+    });
+
+    dropdown.querySelector("#logoutBtn").addEventListener("click", () => {
+      localStorage.removeItem("loggedIn");
+      localStorage.removeItem("username");
+      window.location.href = "/html/student.html";
+    });
+  }
   // Initial fetch and stats update on page load
   fetchItems();
   updateStats();

@@ -117,6 +117,41 @@ document.addEventListener("DOMContentLoaded", () => {
     showStep(0);
   }
 
+  // =========================
+  // RECENTLY FOUND ITEMS (index.html only)
+  // =========================
+  // Fetch verified and unclaimed items from Firestore and append to the homepage grid
+ const fetchRecentItems = async () => {
+  const grid = document.querySelector(".item-grid");
+  if (!grid) return;
+
+  try {
+    const snapshot = await db.collection("items")
+      .where("verified", "==", true)
+      .where("claimed", "==", true)
+      .get();
+
+    if (snapshot.empty) return;
+
+    snapshot.docs.forEach(doc => {
+      const item = doc.data();
+      const card = document.createElement("div");
+      card.classList.add("item-card");
+      card.setAttribute("role", "article");
+      card.setAttribute("tabindex", "0");
+      card.innerHTML = `
+        ${item.photoData ? `<img src="${item.photoData}" alt="${item.itemName || 'Lost item'}">` : ""}
+        <h3>${item.itemName || "Unknown Item"}</h3>
+        <p>${item.lastSeen || ""}</p>
+      `;
+      grid.appendChild(card);
+    });
+  } catch (err) {
+    console.error("Failed to load recent items:", err);
+  }
+};
+  fetchRecentItems();
+
 });
 
 // =========================
@@ -158,7 +193,6 @@ window.addEventListener("DOMContentLoaded", function () {
   const menuToggle = document.querySelector(".menu-toggle");
   navbar.insertBefore(wrapper, menuToggle);
 
-  // FIX: use `wrapper` instead of the undefined `li`
   let hideTimeout;
   // Show dropdown on mouse enter
   wrapper.addEventListener("mouseenter", () => {

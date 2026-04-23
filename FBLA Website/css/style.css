@@ -133,14 +133,14 @@ body {
 }
 
 .hero-left h1 {
-    font-size: 4rem;
+    font-size: 5rem;
     color: #333;
     margin-bottom: 20px;
 }
 
 .hero-left h2 {
-    font-size: 1.8rem;
-    margin-top: -20px;
+    font-size: 2rem;
+    margin-top: -35px;
     margin-bottom: 40px;
     color: #333;
 }
@@ -385,6 +385,18 @@ footer a {
         gap: 15px;
         margin-bottom: 20px;
     }
+    .hero-left h2 {
+    margin-top: 0;
+}
+    .menu-toggle {
+        display: flex;
+        margin-left: auto;   /* ← add this */
+    
+    .profile-wrapper {
+        margin-left: auto;   /* ← this pushes both to the right */
+        margin-right: 8px;
+    }
+}
 }
 
 @media (max-width: 780px) {
